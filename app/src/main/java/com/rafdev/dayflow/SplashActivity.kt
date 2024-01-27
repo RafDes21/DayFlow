@@ -11,7 +11,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.SplashTheme)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+//        setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java)
