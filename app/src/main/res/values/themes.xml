@@ -4,6 +4,12 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="Theme.DayFlow" parent="Base.Theme.DayFlow">
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
 
-    <style name="Theme.DayFlow" parent="Base.Theme.DayFlow" />
+    <style name="SplashTheme" parent="Base.Theme.DayFlow">
+        <item name="android:windowBackground">@drawable/view_background</item>
+        <item name="android:statusBarColor">@color/primary</item>
+    </style>
 </resources>
