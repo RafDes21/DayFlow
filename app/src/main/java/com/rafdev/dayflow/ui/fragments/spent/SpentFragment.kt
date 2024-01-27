@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.FragmentSpentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,4 +24,11 @@ class SpentFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

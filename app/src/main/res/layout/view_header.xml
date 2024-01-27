@@ -17,12 +17,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/logo" />
 
-    <ImageView
-        android:id="@+id/header_add"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_add_task" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rafdev.dayflow.databinding.FragmentTaskBinding
+import com.rafdev.dayflow.ui.addtask.AddTaskActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +21,30 @@ class TaskFragment : Fragment() {
     ): View {
         _binding = FragmentTaskBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initUI()
+
+    }
+
+    private fun initUI() {
+        binding.apply {
+            btnAddTask.setOnClickListener {
+                showAddTask()
+            }
+        }
+    }
+
+    private fun showAddTask() {
+        startActivity(AddTaskActivity.create(requireContext()))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
