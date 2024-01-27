@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primary">#2E4256</color>
+    <color name="bottomTab">#696969</color>
+
 </resources>

@@ -15,4 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        style="@style/BottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemActiveIndicatorStyle="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_tabs"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
