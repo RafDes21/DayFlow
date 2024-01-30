@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -8,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@drawable/rounded_background"
         android:elevation="8dp"
         android:padding="16dp"
         android:windowIsFloating="true">
@@ -20,54 +21,85 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
             android:text="Crear Nota"
+            android:textAllCaps="true"
+            android:textColor="@color/primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextDescription"
+        <LinearLayout
+            android:id="@+id/content_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewTitle"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="top"
-            android:hint="Descripción de la nota"
-            android:inputType="textMultiLine" />
+            android:layout_marginTop="30dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/editTextDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="Descripción de la nota"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/btnRecordVoice"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_record_voice" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/timePickerContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextDescription"
-            android:orientation="horizontal"
+            android:layout_below="@id/content_input"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:layout_marginTop="8dp">
+            android:orientation="horizontal">
 
             <NumberPicker
                 android:id="@+id/hourPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:format="%02d"
                 android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_alarm" />
 
             <NumberPicker
                 android:id="@+id/minutePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:format="%02d"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/timePickerContainer"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:text="Guardar" />
+            android:background="@drawable/rounded_button"
+            android:paddingHorizontal="20dp"
+            android:text="Guardar Nota"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 </RelativeLayout>
