@@ -43,6 +43,8 @@
                     android:id="@+id/editTextDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
                     android:gravity="top"
                     android:hint="Descripción de la nota"
                     android:inputType="textMultiLine" />
