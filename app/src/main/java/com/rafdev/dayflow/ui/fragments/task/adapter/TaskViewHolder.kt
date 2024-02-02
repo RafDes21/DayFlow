@@ -7,11 +7,11 @@ import com.rafdev.dayflow.databinding.LayoutDescriptionHourBinding
 
 class TaskViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-//    val binding = LayoutDescriptionHourBinding.bind(view)
+    private val binding = LayoutDescriptionHourBinding.bind(view)
 
     fun render(item: NoteEntity) {
 
-//        binding.tvDescription.text = item.description
+        binding.tvDescription.text = item.description
 
     }
 
