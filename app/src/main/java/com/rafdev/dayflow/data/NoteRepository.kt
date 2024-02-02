@@ -5,9 +5,11 @@ import com.rafdev.dayflow.data.db.enteties.NoteEntity
 import com.rafdev.dayflow.domain.model.Note
 import com.rafdev.dayflow.domain.model.toEntity
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+
 
 class NoteRepository @Inject constructor(private val noteDao: NoteDao) {
-    suspend fun getAllNotes(): List<NoteEntity> {
+    fun getAllNotes(): Flow<List<NoteEntity>> {
         return noteDao.getAllNotes()
     }
 
