@@ -72,6 +72,8 @@ class AddTaskActivity : AppCompatActivity() {
             Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             viewModel.insertNewNote(textoIngresado, selectedHour.toString())
 
+            finish()
+
 
         }
 
