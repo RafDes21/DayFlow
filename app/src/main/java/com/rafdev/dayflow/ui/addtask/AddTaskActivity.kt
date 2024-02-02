@@ -13,8 +13,10 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.ActivityAddTaskBinding
+import com.rafdev.dayflow.domain.model.Note
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.Locale
@@ -31,6 +33,7 @@ class AddTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddTaskBinding
 
+    private val viewModel: AddTaskViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
@@ -52,15 +55,23 @@ class AddTaskActivity : AppCompatActivity() {
             startVoiceInput()
         }
 
-        binding.btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener {
             val textoIngresado = binding.editTextDescription.text.toString()
 
             val selectedHour = hourPicker.value
             val selectedMinute = minutePicker.value
 
-            val mensaje = "Texto ingresado: $textoIngresado\nHora: ${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
+            val mensaje = "Texto ingresado: $textoIngresado\nHora: ${
+                String.format(
+                    "%02d",
+                    selectedHour
+                )
+            }:${String.format("%02d", selectedMinute)}"
+
 
             Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+            viewModel.insertNewNote(textoIngresado, selectedHour.toString())
+
 
         }
 
