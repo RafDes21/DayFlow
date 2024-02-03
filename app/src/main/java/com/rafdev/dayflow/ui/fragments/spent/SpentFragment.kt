@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.FragmentSpentBinding
+import com.rafdev.dayflow.ui.addspent.AddSpentActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +27,24 @@ class SpentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUI()
     }
-    override fun onDestroyView() {
+
+    private fun initUI() {
+        listeners()
+    }
+
+    private fun listeners() {
+        binding.showAddSpent.setOnClickListener {
+            showAddSpent()        }
+    }
+
+    private fun showAddSpent() {
+        startActivity(AddSpentActivity.create(requireContext()))
+    }
+
+
+        override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
