@@ -61,22 +61,9 @@ class AddTaskActivity : AppCompatActivity() {
             val selectedHour = hourPicker.value
             val selectedMinute = minutePicker.value
 
-            val mensaje = "Texto ingresado: $textoIngresado\nHora: ${
-                String.format(
-                    "%02d",
-                    selectedHour
-                )
-            }:${String.format("%02d", selectedMinute)}"
-
             val hour = "${String.format("%02d",selectedHour)}:${String.format("%02d", selectedMinute)}"
-
-
-            Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             viewModel.insertNewNote(textoIngresado, hour)
-
             finish()
-
-
         }
 
     }
@@ -88,7 +75,7 @@ class AddTaskActivity : AppCompatActivity() {
             RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
         )
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Escribe lo que deseas")
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Dime la nota que deseas agregar")
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT)
         } catch (e: ActivityNotFoundException) {
