@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rafdev.dayflow.data.db.enteties.NoteEntity
 import com.rafdev.dayflow.databinding.FragmentTaskBinding
 import com.rafdev.dayflow.ui.addtask.AddTaskActivity
 import com.rafdev.dayflow.ui.fragments.task.adapter.TaskAdapter
@@ -43,18 +45,29 @@ class TaskFragment : Fragment() {
         }
 
         observers()
+//        listeners()
     }
+
+//    private fun listeners() {
+//        binding.
+//    }
 
     private fun observers() {
         viewModel.apply {
             notes.observe(viewLifecycleOwner) {
                 binding.rvTask.apply {
                     layoutManager = LinearLayoutManager(context)
-                    val taskAdapter = TaskAdapter(it)
+                    val taskAdapter = TaskAdapter(it) {
+                        deleteNote(it)
+                    }
                     adapter = taskAdapter
                 }
             }
         }
+    }
+
+    private fun deleteNote(item: NoteEntity) {
+        viewModel.deleteNote(item.id)
     }
 
     private fun showAddTask() {

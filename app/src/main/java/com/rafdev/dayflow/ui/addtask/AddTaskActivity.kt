@@ -68,9 +68,11 @@ class AddTaskActivity : AppCompatActivity() {
                 )
             }:${String.format("%02d", selectedMinute)}"
 
+            val hour = "${String.format("%02d",selectedHour)}:${String.format("%02d", selectedMinute)}"
+
 
             Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
-            viewModel.insertNewNote(textoIngresado, selectedHour.toString())
+            viewModel.insertNewNote(textoIngresado, hour)
 
             finish()
 
