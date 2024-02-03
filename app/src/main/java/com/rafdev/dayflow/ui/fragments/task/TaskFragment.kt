@@ -54,6 +54,10 @@ class TaskFragment : Fragment() {
 
     private fun observers() {
         viewModel.apply {
+            isShow.observe(viewLifecycleOwner) {
+                binding.noteMessage.visibility = if (it) View.VISIBLE else View.INVISIBLE
+            }
+
             notes.observe(viewLifecycleOwner) {
                 binding.rvTask.apply {
                     layoutManager = LinearLayoutManager(context)
