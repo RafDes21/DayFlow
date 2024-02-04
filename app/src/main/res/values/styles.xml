@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="BottomNavigation">
         <item name="android:background">@color/black_transparent</item>
         <item name="itemTextColor">@color/bottom_nav_selector</item>
@@ -8,4 +9,26 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">70dp</item>
     </style>
+
+    <style name="TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:gravity">center_vertical</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textColorHint">@color/secondary</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="errorTextColor">@color/accent</item>
+        <item name="hintTextColor">@color/primary</item>
+    </style>
+
+<!--    <style name="FormEditText" parent="Widget.AppCompat.EditText">-->
+<!--        <item name="android:textSize">14sp</item>-->
+<!--        <item name="android:textColor">@color/accent</item>-->
+<!--        <item name="android:paddingLeft">16dp</item>-->
+<!--        <item name="singleLine">true</item>-->
+<!--        <item name="maxLines">1</item>-->
+<!--        <item name="android:paddingRight">16dp</item>-->
+<!--        <item name="android:textColorHint">@color/accent</item>-->
+<!--    </style>-->
 </resources>
