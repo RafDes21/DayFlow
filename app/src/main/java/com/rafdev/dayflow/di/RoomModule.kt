@@ -15,13 +15,20 @@ import javax.inject.Singleton
 object RoomModule {
 
     private const val NOTE_DATABASE_NAME = "note_database"
+
     @Singleton
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, NoteDB::class.java, NOTE_DATABASE_NAME).build()
+        Room.databaseBuilder(context, NoteDB::class.java, NOTE_DATABASE_NAME)
+            .addMigrations(NoteDB.MIGRATION_1_2)
+            .build()
 
     @Singleton
     @Provides
     fun provideNoteDao(db: NoteDB) = db.getNoteDao()
+
+    @Singleton
+    @Provides
+    fun provide(db: NoteDB) = db.getSpentDao()
 
 }

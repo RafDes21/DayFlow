@@ -11,3 +11,12 @@ data class NoteEntity(
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "hour") val hour: String
 )
+
+@Entity(tableName = "table_spent")
+data class SpentEntity(
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "price") val price: Float,
+    @ColumnInfo(name = "category") val category: String,
+    @ColumnInfo(name = "description") val description: String
+)
