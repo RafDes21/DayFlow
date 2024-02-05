@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.FragmentSpentBinding
 import com.rafdev.dayflow.ui.addspent.AddSpentActivity
+import com.rafdev.dayflow.ui.fragments.spent.adapter.SpentAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,6 +19,8 @@ class SpentFragment : Fragment() {
 
     private var _binding: FragmentSpentBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: SpentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,11 +37,25 @@ class SpentFragment : Fragment() {
 
     private fun initUI() {
         listeners()
+        observers()
+    }
+
+    private fun observers() {
+        viewModel.apply {
+            spent.observe(viewLifecycleOwner) {
+                binding.rvSpent.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    val spentAdapter = SpentAdapter(it)
+                    adapter = spentAdapter
+                }
+            }
+        }
     }
 
     private fun listeners() {
         binding.showAddSpent.setOnClickListener {
-            showAddSpent()        }
+            showAddSpent()
+        }
     }
 
     private fun showAddSpent() {
@@ -44,7 +63,7 @@ class SpentFragment : Fragment() {
     }
 
 
-        override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

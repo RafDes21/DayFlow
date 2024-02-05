@@ -12,6 +12,8 @@
     <string name="expense_name">Nombre del Gasto</string>
     <string name="category">Categoría</string>
     <string name="save">Guardar</string>
+    <string name="price">00.000</string>
+    <string name="description">description</string>
 
 
 </resources>

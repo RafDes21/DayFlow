@@ -47,6 +47,7 @@ class AddSpentActivity : AppCompatActivity() {
         val description = binding.etDescription.text.toString()
 
         viewModel.insertNewSpent(name, expenseAmount, category, description)
+        finish()
     }
 
     private fun categoryOption() {
