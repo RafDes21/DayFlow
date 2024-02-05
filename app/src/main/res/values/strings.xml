@@ -9,6 +9,9 @@
     <string name="there_are_no_notes">No hay notas...</string>
     <string name="you_have_no_expenses">No tienes gastos registrados...</string>
     <string name="expense_amount">Monto del gasto</string>
+    <string name="expense_name">Nombre del Gasto</string>
+    <string name="category">Categoría</string>
+    <string name="save">Guardar</string>
 
 
 </resources>

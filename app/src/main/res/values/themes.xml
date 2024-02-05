@@ -28,7 +28,7 @@
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:textColorHint">@color/secondary</item>
-        <item name="boxStrokeColor">@color/white</item>
+        <item name="boxStrokeColor">@color/accent</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="errorTextColor">@color/accent</item>
         <item name="hintTextColor">@color/primary</item>
@@ -43,5 +43,15 @@
         <item name="android:paddingRight">16dp</item>
         <item name="android:textColorHint">@color/accent</item>
     </style>
+    <style name="AutoCompleteTextViewStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:gravity">center_vertical</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:textColorHint">@color/secondary</item>
+        <item name="boxStrokeColor">@color/accent</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="endIconTint">@color/secondary</item>
+        <item name="errorTextColor">@color/accent</item>
+        <item name="hintTextColor">@color/accent</item>
 
+    </style>
 </resources>
