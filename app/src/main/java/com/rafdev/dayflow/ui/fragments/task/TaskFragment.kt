@@ -1,5 +1,6 @@
 package com.rafdev.dayflow.ui.fragments.task
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -70,8 +71,24 @@ class TaskFragment : Fragment() {
         }
     }
 
+    private fun mostrarDialogoConfirmacion() {
+        val builder = AlertDialog.Builder(requireContext())
+
+        builder.setTitle("Confirmar eliminación")
+            .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
+            .setPositiveButton("Sí") { dialog, which ->
+                // Lógica para eliminar el elemento
+//                eliminarElemento()
+            }
+            .setNegativeButton("No") { dialog, which ->
+                // No hacer nada si se selecciona "No"
+            }
+            .show()
+    }
+
     private fun deleteNote(item: NoteEntity) {
-        viewModel.deleteNote(item.id)
+//        viewModel.deleteNote(item.id)
+        mostrarDialogoConfirmacion()
     }
 
     private fun showAddTask() {
