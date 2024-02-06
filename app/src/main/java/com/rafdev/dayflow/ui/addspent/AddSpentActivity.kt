@@ -34,6 +34,8 @@ class AddSpentActivity : AppCompatActivity() {
         mostrarFechaActual()
         binding.ivCalendar.setOnClickListener() {
             showPickerDialog()
+            val showDate = binding.tvDate.text.toString()
+            Toast.makeText(this, "$showDate", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -78,6 +80,9 @@ class AddSpentActivity : AppCompatActivity() {
         val expenseAmount = binding.etExpenseAmount.text.toString().toFloatOrNull() ?: 0f
         val category = binding.actAutocomplete.text.toString()
         val description = binding.etDescription.text.toString()
+
+        val showDate = binding.tvDate.text.toString()
+        Toast.makeText(this, "$showDate", Toast.LENGTH_SHORT).show()
 
         viewModel.insertNewSpent(name, expenseAmount, category, description)
         finish()
