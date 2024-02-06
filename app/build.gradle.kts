@@ -44,14 +44,17 @@ dependencies {
     val dagger = "2.48.1"
     val navigationVersion = "2.7.6"
     val roomVersion = "2.5.0"
+    val lottieVersion = "6.0.1"
 
+    //lottie
+    implementation("com.airbnb.android:lottie:$lottieVersion")
     //Room
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
 
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
 
 
     //navigation

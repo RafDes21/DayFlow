@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,9 @@ import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.ActivityAddSpentBinding
 import com.rafdev.dayflow.ui.addtask.AddTaskActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class AddSpentActivity : AppCompatActivity() {
@@ -27,6 +31,10 @@ class AddSpentActivity : AppCompatActivity() {
         binding = ActivityAddSpentBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+        mostrarFechaActual()
+        binding.ivCalendar.setOnClickListener() {
+            showPickerDialog()
+        }
     }
 
     private fun initUI() {
@@ -38,6 +46,31 @@ class AddSpentActivity : AppCompatActivity() {
         binding.btnSaveExpense.setOnClickListener {
             addNewSpent()
         }
+    }
+
+
+    private fun mostrarFechaActual() {
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val fechaActual = dateFormat.format(calendar.time)
+        binding.tvDate.text = fechaActual
+    }
+
+
+    private fun showPickerDialog() {
+        val datePicker = DatePicker { day, month, year -> onDataSelect(day, month, year) }
+        datePicker.show(supportFragmentManager, "show calender")
+    }
+
+    private fun onDataSelect(day: Int, month: Int, year: Int) {
+        Log.i("testprueba", "$day $month $year")
+
+        val formattedDay = String.format("%02d", day)
+        val formattedMonth = String.format("%02d", month)
+
+        val date = "$formattedDay/$formattedMonth/$year"
+
+        binding.tvDate.text = date
     }
 
     private fun addNewSpent() {

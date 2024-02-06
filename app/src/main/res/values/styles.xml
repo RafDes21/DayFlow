@@ -22,6 +22,13 @@
         <item name="hintTextColor">@color/primary</item>
     </style>
 
+    <style name="CustomDatePickerDialogTheme" parent="android:Theme.Material.Dialog">
+        <!-- Cambiar el color de fondo, el texto y otros atributos según sea necesario -->
+        <item name="android:colorAccent">@color/accent</item>
+<!--        <item name="android:buttonBarButtonStyle">@style/CustomButtonBarButtonStyle</item>-->
+<!--        <item name="android:datePickerStyle">@style/CustomDatePickerStyle</item>-->
+    </style>
+
 <!--    <style name="FormEditText" parent="Widget.AppCompat.EditText">-->
 <!--        <item name="android:textSize">14sp</item>-->
 <!--        <item name="android:textColor">@color/accent</item>-->

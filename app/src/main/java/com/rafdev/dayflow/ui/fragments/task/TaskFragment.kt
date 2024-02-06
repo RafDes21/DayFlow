@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rafdev.dayflow.data.db.enteties.NoteEntity
 import com.rafdev.dayflow.databinding.FragmentTaskBinding
@@ -61,7 +62,7 @@ class TaskFragment : Fragment() {
 
             notes.observe(viewLifecycleOwner) {
                 binding.rvTask.apply {
-                    layoutManager = LinearLayoutManager(context)
+                    layoutManager = GridLayoutManager(context, 2)
                     val taskAdapter = TaskAdapter(it) {
                         deleteNote(it)
                     }
@@ -71,14 +72,14 @@ class TaskFragment : Fragment() {
         }
     }
 
-    private fun mostrarDialogoConfirmacion() {
+    private fun showDialogConfirmation(item: NoteEntity) {
         val builder = AlertDialog.Builder(requireContext())
 
         builder.setTitle("Confirmar eliminación")
             .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
             .setPositiveButton("Sí") { dialog, which ->
                 // Lógica para eliminar el elemento
-//                eliminarElemento()
+                viewModel.deleteNote(item.id)
             }
             .setNegativeButton("No") { dialog, which ->
                 // No hacer nada si se selecciona "No"
@@ -88,7 +89,7 @@ class TaskFragment : Fragment() {
 
     private fun deleteNote(item: NoteEntity) {
 //        viewModel.deleteNote(item.id)
-        mostrarDialogoConfirmacion()
+        showDialogConfirmation(item)
     }
 
     private fun showAddTask() {
