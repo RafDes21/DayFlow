@@ -16,7 +16,7 @@
     <string name="description">descripción:</string>
     <string name="hour">00:00</string>
     <string name="date">00/00/00</string>
-
+    <string name="title">título</string>
 
 
 </resources>
