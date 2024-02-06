@@ -84,7 +84,7 @@ class AddSpentActivity : AppCompatActivity() {
         val showDate = binding.tvDate.text.toString()
         Toast.makeText(this, "$showDate", Toast.LENGTH_SHORT).show()
 
-        viewModel.insertNewSpent(name, expenseAmount, category, description)
+        viewModel.insertNewSpent(name, expenseAmount, category, description, showDate)
         finish()
     }
 

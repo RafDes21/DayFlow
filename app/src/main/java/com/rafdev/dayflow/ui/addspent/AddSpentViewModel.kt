@@ -14,10 +14,22 @@ import javax.inject.Inject
 class AddSpentViewModel @Inject constructor(private val insertSpentUseCase: InsertSpentUseCase) :
     ViewModel() {
 
-    fun insertNewSpent(name: String, price: Float, category: String, description: String) {
+    fun insertNewSpent(
+        name: String,
+        price: Float,
+        category: String,
+        description: String,
+        date: String
+    ) {
 
         viewModelScope.launch {
-            val newSpent = SpentEntity(name = name, price = price, category = category, description = description)
+            val newSpent = SpentEntity(
+                name = name,
+                price = price,
+                category = category,
+                description = description,
+                date = date
+            )
             insertSpentUseCase(newSpent)
         }
     }

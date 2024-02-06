@@ -9,7 +9,7 @@ import com.rafdev.dayflow.data.db.dao.SpentDao
 import com.rafdev.dayflow.data.db.enteties.NoteEntity
 import com.rafdev.dayflow.data.db.enteties.SpentEntity
 
-@Database(entities = [NoteEntity::class, SpentEntity::class], version = 2)
+@Database(entities = [NoteEntity::class, SpentEntity::class], version = 3)
 abstract class NoteDB : RoomDatabase() {
     abstract fun getNoteDao(): NoteDao
     abstract fun getSpentDao(): SpentDao
@@ -25,6 +25,14 @@ abstract class NoteDB : RoomDatabase() {
                             "category TEXT NOT NULL," +
                             "description TEXT NOT NULL)"
                 )
+            }
+        }
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE note_table ADD COLUMN title TEXT NOT NULL DEFAULT ''")
+                database.execSQL("ALTER TABLE note_table ADD COLUMN date TEXT NOT NULL DEFAULT ''")
+
+                database.execSQL("ALTER TABLE table_spent ADD COLUMN date TEXT NOT NULL DEFAULT ''")
             }
         }
     }

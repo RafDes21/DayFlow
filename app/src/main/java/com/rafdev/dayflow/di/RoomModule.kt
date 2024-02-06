@@ -20,8 +20,10 @@ object RoomModule {
     @Provides
     fun provideRoom(@ApplicationContext context: Context) =
         Room.databaseBuilder(context, NoteDB::class.java, NOTE_DATABASE_NAME)
-            .addMigrations(NoteDB.MIGRATION_1_2)
-            .build()
+            .addMigrations(
+                NoteDB.MIGRATION_1_2,
+                NoteDB.MIGRATION_2_3
+            ).build()
 
     @Singleton
     @Provides

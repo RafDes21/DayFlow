@@ -14,10 +14,10 @@ class AddTaskViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    fun insertNewNote(description: String, hour: String) {
+    fun insertNewNote(title: String, description: String, hour: String, date: String) {
 
         viewModelScope.launch {
-            val newNote = Note(description, hour)
+            val newNote = Note(title, description, hour, date)
             insertNoteUseCase(newNote)
         }
     }
