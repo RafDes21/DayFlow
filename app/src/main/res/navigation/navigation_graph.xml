@@ -9,10 +9,23 @@
         android:id="@+id/taskFragment"
         android:name="com.rafdev.dayflow.ui.fragments.task.TaskFragment"
         android:label="fragment_task"
-        tools:layout="@layout/fragment_task" />
+        tools:layout="@layout/fragment_task" >
+        <action
+            android:id="@+id/action_taskFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/spentFragment"
         android:name="com.rafdev.dayflow.ui.fragments.spent.SpentFragment"
         android:label="fragment_spent"
         tools:layout="@layout/fragment_spent" />
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="com.rafdev.dayflow.ui.fragments.task.fragment.TaskDetailFragment"
+        android:label="fragment_task_detail"
+        tools:layout="@layout/fragment_task_detail" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

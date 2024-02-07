@@ -68,7 +68,7 @@ class AddTaskActivity : AppCompatActivity() {
             val selectedHour = hourPicker.value
             val selectedMinute = minutePicker.value
 
-            val title = "title"
+            val title = binding.etName.text.toString()
             val hour =
                 "${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
             viewModel.insertNewNote(title, textoIngresado, hour, showDate)

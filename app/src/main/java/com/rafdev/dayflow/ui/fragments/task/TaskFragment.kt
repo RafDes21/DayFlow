@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rafdev.dayflow.data.db.enteties.NoteEntity
@@ -64,12 +66,21 @@ class TaskFragment : Fragment() {
                 binding.rvTask.apply {
                     layoutManager = GridLayoutManager(context, 2)
                     val taskAdapter = TaskAdapter(it) {
-                        deleteNote(it)
+//                        deleteNote(it)
+                        showDetailFragment(it)
                     }
                     adapter = taskAdapter
                 }
             }
         }
+    }
+
+    private fun showDetailFragment(it: NoteEntity) {
+        findNavController().navigate(
+            TaskFragmentDirections.actionTaskFragmentToTaskDetailFragment(
+                id = it.id.toString()
+            )
+        )
     }
 
     private fun showDialogConfirmation(item: NoteEntity) {

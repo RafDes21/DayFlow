@@ -11,9 +11,8 @@ class TaskViewHolder(view: View, private val onClickListener: (NoteEntity) -> Un
 
     fun render(item: NoteEntity) {
 
-        binding.tvDescription.text = item.description
-        binding.tvHour.text = item.hour
-        binding.ivDelete.setOnClickListener{
+        binding.tvTitle.text = item.title
+        binding.contentTitle.setOnClickListener{
             onClickListener(item)
         }
 

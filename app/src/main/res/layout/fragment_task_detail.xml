@@ -11,15 +11,15 @@
 
     <LinearLayout
         android:id="@+id/content_detail"
-        android:padding="5dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/black_transparent"
         android:orientation="vertical"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/tv_title"
@@ -80,7 +80,20 @@
             android:textSize="16sp"
             tools:text="Esta es una descripción de ejemplo que puede ocupar varias líneas en el TextView." />
 
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:lottie_fileName="ic_animation_delete.json"
+            app:lottie_imageAssetsFolder="assets"
+            app:lottie_loop="true" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

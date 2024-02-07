@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.rafdev.dayflow.databinding.FragmentTaskDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TaskDetailFragment : Fragment() {
 
-    private var _binding:FragmentTaskDetailBinding? = null
+    private val args: TaskDetailFragmentArgs by navArgs()
+
+    private var _binding: FragmentTaskDetailBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
