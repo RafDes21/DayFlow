@@ -3,11 +3,10 @@
 
     <string name="task">Notas</string>
     <string name="spent">Gastos</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="there_are_no_notes">No hay notas...</string>
-    <string name="you_have_no_expenses">No tienes gastos registrados...</string>
+    <string name="there_are_no_notes">No hay notas…</string>
+    <string name="you_have_no_expenses">No tienes gastos registrados…</string>
     <string name="expense_amount">Monto del gasto</string>
     <string name="expense_name">Nombre del Gasto</string>
     <string name="category">Categoría</string>
@@ -17,6 +16,9 @@
     <string name="hour">00:00</string>
     <string name="date">00/00/00</string>
     <string name="title">título</string>
-
+    <string name="add_note">Guardar Nota</string>
+    <string name="new_note">Nueva Nota</string>
+    <string name="description_calendar">description_calendar</string>
+    <string name="description_alarm">description_alarm</string>
 
 </resources>
