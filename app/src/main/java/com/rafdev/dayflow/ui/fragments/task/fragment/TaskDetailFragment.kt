@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.rafdev.dayflow.data.db.enteties.NoteEntity
 import com.rafdev.dayflow.databinding.FragmentTaskDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,12 +19,43 @@ class TaskDetailFragment : Fragment() {
     private var _binding: FragmentTaskDetailBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: TaskDetailViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentTaskDetailBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUI()
+    }
+
+    private fun initUI() {
+        listeners()
+        observers()
+    }
+
+    private fun observers() {
+        viewModel.result.observe(viewLifecycleOwner) {
+            updateView(it)
+        }
+    }
+
+    private fun updateView(it: NoteEntity?) {
+        binding.apply {
+            tvTitle.text = it?.title
+            tvDate.text = it?.date
+            tvDescription.text = it?.description
+            tvHour.text = it?.hour
+        }
+    }
+
+    private fun listeners() {
+        val id = args.id.toInt()
+        viewModel.getNote(id)
     }
 
 }

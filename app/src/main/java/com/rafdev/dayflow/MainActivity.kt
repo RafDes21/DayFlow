@@ -33,5 +33,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
         binding.bottomNav.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.taskDetailFragment -> R.id.taskFragment
+                else -> null
+            }?.let {
+                binding.bottomNav.menu.runCatching {
+                    findItem(it)
+                }.getOrNull()?.isChecked = true
+            }
+        }
+
     }
 }

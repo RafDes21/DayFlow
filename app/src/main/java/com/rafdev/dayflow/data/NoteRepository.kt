@@ -10,7 +10,10 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
 
-class NoteRepository @Inject constructor(private val noteDao: NoteDao, private val spentDao: SpentDao) {
+class NoteRepository @Inject constructor(
+    private val noteDao: NoteDao,
+    private val spentDao: SpentDao
+) {
     fun getAllNotes(): Flow<List<NoteEntity>> {
         return noteDao.getAllNotes()
     }
@@ -23,19 +26,22 @@ class NoteRepository @Inject constructor(private val noteDao: NoteDao, private v
         noteDao.deleteById(noteId)
     }
 
-    fun getAllSpent():Flow<List<SpentEntity>>{
+    suspend fun getNoteById(id: Int): NoteEntity {
+        return noteDao.getItemById(id)
+    }
+
+
+    fun getAllSpent(): Flow<List<SpentEntity>> {
         return spentDao.getSpent()
     }
 
-    suspend fun insertSpent(spent: SpentEntity){
+    suspend fun insertSpent(spent: SpentEntity) {
         spentDao.insert(spent)
     }
 
-    suspend fun deleteSpentById(spentId: Int){
+    suspend fun deleteSpentById(spentId: Int) {
         spentDao.deleteById(spentId)
     }
-
-
 
 
 }
