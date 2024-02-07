@@ -1,5 +1,7 @@
 package com.rafdev.dayflow.ui.addspent
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rafdev.dayflow.data.db.enteties.SpentEntity
@@ -13,6 +15,16 @@ import javax.inject.Inject
 @HiltViewModel
 class AddSpentViewModel @Inject constructor(private val insertSpentUseCase: InsertSpentUseCase) :
     ViewModel() {
+
+
+    private val _dataIsValid = MutableLiveData<Boolean>()
+    val dataIsValid: LiveData<Boolean> get() = _dataIsValid
+
+    fun onFieldsChanged(title: String, price: String, category: String, description: String) {
+        _dataIsValid.value =
+            title.isNotEmpty() && price.isNotEmpty() && category.isNotEmpty() && description.isNotEmpty()
+
+    }
 
     fun insertNewSpent(
         name: String,

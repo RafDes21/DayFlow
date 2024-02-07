@@ -56,7 +56,7 @@ class SpentFragment : Fragment() {
             }
         }
     }
-    
+
     private fun showDialogConfirmation(id: Int) {
         val builder = AlertDialog.Builder(requireContext())
 
@@ -64,7 +64,6 @@ class SpentFragment : Fragment() {
             .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
             .setPositiveButton("Sí") { dialog, which ->
                 viewModel.deleteSpent(id)
-                findNavController().popBackStack()
             }
             .setNegativeButton("No") { dialog, which ->
                 // No hacer nada si se selecciona "No"
