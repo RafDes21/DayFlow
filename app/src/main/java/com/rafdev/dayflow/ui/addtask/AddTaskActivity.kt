@@ -3,24 +3,17 @@ package com.rafdev.dayflow.ui.addtask
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
-import android.util.Log
 import android.widget.EditText
 import android.widget.NumberPicker
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.ActivityAddTaskBinding
-import com.rafdev.dayflow.domain.model.Note
 import com.rafdev.dayflow.ui.addspent.DatePicker
+import com.rafdev.dayflow.ui.onTextChanged
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -43,7 +36,7 @@ class AddTaskActivity : AppCompatActivity() {
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mostrarFechaActual()
+        initUI()
 
         val hourPicker = findViewById<NumberPicker>(R.id.hourPicker)
         val minutePicker = findViewById<NumberPicker>(R.id.minutePicker)
@@ -61,32 +54,59 @@ class AddTaskActivity : AppCompatActivity() {
             startVoiceInput()
         }
 
-        binding.btnSave.setOnClickListener {
-            val textoIngresado = binding.editTextDescription.text.toString()
-            val showDate = binding.tvDate.text.toString()
-            Toast.makeText(this, "$showDate", Toast.LENGTH_SHORT).show()
-            val selectedHour = hourPicker.value
-            val selectedMinute = minutePicker.value
-
-            val title = binding.etName.text.toString()
-            val hour =
-                "${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
-            viewModel.insertNewNote(title, textoIngresado, hour, showDate)
-            finish()
-        }
-
         binding.ivCalendar.setOnClickListener() {
             showPickerDialog()
         }
 
+
+    }
+
+    private fun initUI() {
+        showCurrentDay()
+        listeners()
+        observers()
+    }
+
+    private fun observers() {
+        viewModel.dataIsValid.observe(this) { isValid ->
+            binding.btnSave.isEnabled = isValid
+        }
+    }
+
+    private fun listeners() {
+        binding.etName.onTextChanged { onFieldChanged() }
+        binding.editTextDescription.onTextChanged { onFieldChanged() }
+        val showDate = binding.tvDate.text.toString()
+        val selectedHour = binding.hourPicker.value
+        val selectedMinute = binding.minutePicker.value
+
+        val hour =
+            "${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
+
+        binding.btnSave.setOnClickListener {
+            viewModel.insertNewNote(
+                binding.etName.text.toString(),
+                binding.editTextDescription.text.toString(),
+                hour,
+                showDate
+            )
+            finish()
+        }
+    }
+
+    private fun onFieldChanged() {
+        viewModel.onFieldsChanged(
+            title = binding.etName.text.toString(),
+            description = binding.editTextDescription.text.toString()
+        )
     }
 
 
-    private fun mostrarFechaActual() {
+    private fun showCurrentDay() {
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val fechaActual = dateFormat.format(calendar.time)
-        binding.tvDate.text = fechaActual
+        val dateOfTheDay = dateFormat.format(calendar.time)
+        binding.tvDate.text = dateOfTheDay
     }
 
 
@@ -96,11 +116,8 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     private fun onDataSelect(day: Int, month: Int, year: Int) {
-        Log.i("testprueba", "$day $month $year")
-
         val formattedDay = String.format("%02d", day)
         val formattedMonth = String.format("%02d", month)
-
         val date = "$formattedDay/$formattedMonth/$year"
 
         binding.tvDate.text = date
