@@ -36,25 +36,21 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initUI()
-
     }
 
     private fun initUI() {
+        observers()
+        listeners()
+    }
+
+    private fun listeners() {
         binding.apply {
             btnAddTask.setOnClickListener {
                 showAddTask()
             }
         }
-
-        observers()
-//        listeners()
     }
-
-//    private fun listeners() {
-//        binding.
-//    }
 
     private fun observers() {
         viewModel.apply {
@@ -66,7 +62,6 @@ class TaskFragment : Fragment() {
                 binding.rvTask.apply {
                     layoutManager = GridLayoutManager(context, 2)
                     val taskAdapter = TaskAdapter(it) {
-//                        deleteNote(it)
                         showDetailFragment(it)
                     }
                     adapter = taskAdapter
@@ -83,25 +78,6 @@ class TaskFragment : Fragment() {
         )
     }
 
-    private fun showDialogConfirmation(item: NoteEntity) {
-        val builder = AlertDialog.Builder(requireContext())
-
-        builder.setTitle("Confirmar eliminación")
-            .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
-            .setPositiveButton("Sí") { dialog, which ->
-                // Lógica para eliminar el elemento
-                viewModel.deleteNote(item.id)
-            }
-            .setNegativeButton("No") { dialog, which ->
-                // No hacer nada si se selecciona "No"
-            }
-            .show()
-    }
-
-    private fun deleteNote(item: NoteEntity) {
-//        viewModel.deleteNote(item.id)
-        showDialogConfirmation(item)
-    }
 
     private fun showAddTask() {
         startActivity(AddTaskActivity.create(requireContext()))

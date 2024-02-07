@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/disabled_button_color" />
+            <!-- Aquí puedes ajustar otros atributos como esquina, borde, etc. -->
+        </shape>
+    </item>
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/enabled_button_color" />
+            <!-- Aquí puedes ajustar otros atributos como esquina, borde, etc. -->
+        </shape>
+    </item>
+</selector>

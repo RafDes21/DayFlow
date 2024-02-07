@@ -2,12 +2,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_transparent">#C8FFFFFF</color>
+
 
     <color name="primary">#2E4256</color>
     <color name="bottomTab">#696969</color>
     <color name="black_transparent">#56000000</color>
     <color name="secondary">#401B6E</color>
     <color name="accent">#EA9D13</color>
+    <color name="disabled_button_color">#74401B6E</color>
+    <color name="enabled_button_color">#401B6E</color>
+
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/accent
     </color>
