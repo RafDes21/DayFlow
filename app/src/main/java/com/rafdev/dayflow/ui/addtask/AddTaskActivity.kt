@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.widget.EditText
 import android.widget.NumberPicker
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.databinding.ActivityAddTaskBinding
@@ -76,14 +77,12 @@ class AddTaskActivity : AppCompatActivity() {
     private fun listeners() {
         binding.etName.onTextChanged { onFieldChanged() }
         binding.editTextDescription.onTextChanged { onFieldChanged() }
-        val showDate = binding.tvDate.text.toString()
-        val selectedHour = binding.hourPicker.value
-        val selectedMinute = binding.minutePicker.value
-
-        val hour =
-            "${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
-
         binding.btnSave.setOnClickListener {
+            val showDate = binding.tvDate.text.toString()
+            val selectedHour = binding.hourPicker.value
+            val selectedMinute = binding.minutePicker.value
+            val hour =
+                "${String.format("%02d", selectedHour)}:${String.format("%02d", selectedMinute)}"
             viewModel.insertNewNote(
                 binding.etName.text.toString(),
                 binding.editTextDescription.text.toString(),

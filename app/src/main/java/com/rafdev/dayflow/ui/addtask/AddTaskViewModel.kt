@@ -22,7 +22,6 @@ class AddTaskViewModel @Inject constructor(
 
     fun onFieldsChanged(title: String, description: String) {
         _dataIsValid.value = title.isNotEmpty() && description.isNotEmpty()
-        Log.i("muestragratis", "$description $title" )
 
     }
 

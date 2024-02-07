@@ -6,10 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rafdev.dayflow.R
 import com.rafdev.dayflow.data.db.enteties.SpentEntity
 
-class SpentAdapter(private val spentList: List<SpentEntity>) : RecyclerView.Adapter<SpentViewHolder>() {
+class SpentAdapter(
+    private val spentList: List<SpentEntity>,
+    private val onClickListener: (SpentEntity) -> Unit
+) : RecyclerView.Adapter<SpentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpentViewHolder {
-        val layout = LayoutInflater.from(parent.context)
-        return SpentViewHolder(layout.inflate(R.layout.layout_item_detail, parent, false))
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemView = layoutInflater.inflate(R.layout.layout_item_detail, parent, false)
+        return SpentViewHolder(itemView, onClickListener)
     }
 
     override fun getItemCount(): Int = spentList.size

@@ -125,13 +125,14 @@
                 android:id="@+id/layout_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/timePickerContainer"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tools:text="@string/date"
                     android:layout_weight="1" />
 
                 <ImageView
@@ -142,13 +143,17 @@
                     android:src="@drawable/ic_calender" />
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSaveExpense"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/save" />
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_background_selector"
+                android:enabled="false"
+                android:paddingHorizontal="20dp"
+                android:text="@string/save"
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
